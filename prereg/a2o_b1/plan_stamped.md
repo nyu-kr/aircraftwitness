@@ -1,0 +1,11 @@
+# A2O blind set: pre-registered runs (geoloc), written 2026-11-03 23:10 EST before any A2O run
+- code: git tag a2o-v1 (this commit's parent chain; = ecl-v1.1 + straight_fit crash fix c8d7b20), frozen copy /claude/.scratch/geoloc/frozen/a2o-v1
+- inputs read: a2o_blind/manifest.parquet (packet, box, utc_start, dur_s, audio, flights_day), a2o_blind/boxes.csv (20 km boxes, sealed offsets), a2o_blind/flights/adsblol day files; never sources/a2o or sources/aus
+- ADS-B: per packet, box + 0.3 deg, start - 20 min .. end + 21 min, its flights_day file only; pooled box-day = union of its packets' cuts
+- DEM: Copernicus GLO-90 tiles (missing tile = sea, 0 m), box +- 0.35 deg
+- T1 per packet: locate.py, box, t0 = utc_start, slack 5 s (GPS-timed recorders, per geo-sources), step 200 m, dmax 10 km
+- T1 pooled: every packet of one box and UTC day on one clock (--clips), same box, t0 = first start, slack 5 s
+- scoring: geo-verify against the sealed truth; success within 1 km (site coordinates obfuscated <= ~200 m)
+- 23:12 EST: geo-sources moved to one box per packet (295 packets, 295 boxes, 23:07), so packets of one site cannot be grouped and there is no pooled A2O run; cuts and DEMs redone per packet box. No A2O run had started.
+- 23:25 EST, before any A2O run: geo-clock reported (23:25) that A2O audio sits 5-8.5 s behind its label (fit with site groupings, i.e. truth-informed). The pre-registered run keeps slack 5 s. A post hoc run with slack 60 s (the Eclipse value, not tuned to 8 s) follows it, rows task T1-slack60-posthoc, answers/T1ph60/.
+- 01:23 EST note: geo-clock withdrew the 23:25 values (-9.5/-8.2/-5.1 s, joint fit with positions) and replaced them with a clock-only fit (three A2O sites at -9.2 +- 0.5, -4.5 +- 0.4 and -5.5 +- 1.4 s, none passing its 2:1 support rule). The post hoc slack 60 s run is unchanged (60 s was never tuned to these values).

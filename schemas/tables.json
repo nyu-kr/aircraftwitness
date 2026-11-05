@@ -1,0 +1,16 @@
+{
+  "data/assets.csv": "tables.schema.json#/$defs/assets",
+  "data/audibility_sample.csv": "tables.schema.json#/$defs/audibility_sample",
+  "data/b3_blind_squares.csv": "tables.schema.json#/$defs/b3_blind_squares",
+  "data/benchmark_answers.jsonl": "tables.schema.json#/$defs/benchmark_answers",
+  "data/claim_check_answers.csv": "tables.schema.json#/$defs/claim_check_answers",
+  "data/claim_check_cohort.csv": "tables.schema.json#/$defs/claim_check_cohort",
+  "data/clock_tasks.csv": "tables.schema.json#/$defs/clock_tasks",
+  "data/coverage.jsonl": "passes_coverage.schema.json",
+  "data/detection_inventory.jsonl": "detection_inventory.schema.json",
+  "data/detection_predictions.jsonl": "detection_prediction.schema.json",
+  "data/livermore_published_passes.csv": "tables.schema.json#/$defs/livermore_published_passes",
+  "data/passes.jsonl": "passes.schema.json",
+  "data/recordings.csv": "tables.schema.json#/$defs/recordings",
+  "data/results.csv": "tables.schema.json#/$defs/results"
+}

@@ -1,0 +1,3273 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "@language": "en",
+    "sc": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "dct": "http://purl.org/dc/terms/",
+    "conformsTo": "dct:conformsTo",
+    "citeAs": "cr:citeAs",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "arrayShape": "cr:arrayShape",
+    "containedIn": "cr:containedIn",
+    "recordSet": "cr:recordSet",
+    "field": "cr:field",
+    "source": "cr:source",
+    "fileObject": "cr:fileObject",
+    "extract": "cr:extract",
+    "column": "cr:column",
+    "jsonPath": "cr:jsonPath",
+    "isArray": "cr:isArray",
+    "equivalentProperty": "cr:equivalentProperty",
+    "fileProperty": "cr:fileProperty",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "name": {
+      "@container": "@language"
+    },
+    "description": {
+      "@container": "@language"
+    }
+  },
+  "@type": "sc:Dataset",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "AircraftWitness: How Often Aircraft Can Locate Recordings",
+  "description": "geometric surveillance-sample proximity, not proof of audibility. v1, 2026-11-04: label coverage is stated per recording in data/coverage.jsonl; a missing cut is unknown, never zero",
+  "version": "1.0.0",
+  "datePublished": "2026-11-04",
+  "dateModified": "2026-11-05T12:03:41.293716Z",
+  "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "creator": {
+    "@type": "sc:Person",
+    "name": "Kris Atallah",
+    "affiliation": {
+      "@type": "sc:Organization",
+      "name": "New York University"
+    }
+  },
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/assets.csv",
+      "name": "assets.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/assets.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "91d72ca96d4efe3039ffdc24ad607218e8102eae44d13fee421494551a90d110"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/audibility_sample.csv",
+      "name": "audibility_sample.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/audibility_sample.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "37c80b0365f0f6a5b0d2c53a29a2e650ccb8aced07f33cf51f36e2a788a78f5e"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/b3_blind_squares.csv",
+      "name": "b3_blind_squares.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/b3_blind_squares.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "e41653804a6c165525d950614147486d8ff0b1221c01bff07d80ca762c14c858"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/benchmark_answers.jsonl",
+      "name": "benchmark_answers.jsonl",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/benchmark_answers.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "c9673875a81bdcb2fba42a9c93504285371710f909b76db0ef40f6e7529f79fe"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/claim_check_answers.csv",
+      "name": "claim_check_answers.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/claim_check_answers.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "3bbe55fda085779687f71cf598dbf9437e5567e0579644648518dab00cebd19a"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/claim_check_cohort.csv",
+      "name": "claim_check_cohort.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/claim_check_cohort.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "5cd9b95e76a2ca3b6c4036d620d50df6a06b26dd3ba8b9bb0bf0ecc04617b980"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/clock_tasks.csv",
+      "name": "clock_tasks.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/clock_tasks.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "89671172c29015d3e024c774d39981170261783664f3c5b9672742a881ef97b7"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/coverage.jsonl",
+      "name": "coverage.jsonl",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/coverage.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "504377e5d8237ec9b2a7cc8f7203dab4eb886e0ca0b74ac1a6e497d578cd7a12"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/detection_inventory.jsonl",
+      "name": "detection_inventory.jsonl",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/detection_inventory.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "6cf5ce22ded978df896be3fb95f5afadba9ea53912982ead8367b96688b0ee25"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/detection_predictions.jsonl",
+      "name": "detection_predictions.jsonl",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/detection_predictions.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "177f8cddf28e59ed6e15f2a882dea543ebad0e3feb56a06ddbd6dd9bb18c367e"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/livermore_published_passes.csv",
+      "name": "livermore_published_passes.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/livermore_published_passes.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "4fbff4f60efbe3b87b3f52718968df244e6e8f5fce55eadfb732cb57709b6e0c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/passes.jsonl",
+      "name": "passes.jsonl",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/passes.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "13753887f5547e9252b1735cfedfb3600645926e4da32262c461df5f196febe3"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/recordings.csv",
+      "name": "recordings.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/recordings.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "53bff07e1ba6679fc9a48130a8a543a04f378b4a8ca3fffe282c12a001087631"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/results.csv",
+      "name": "results.csv",
+      "description": "Released table; source and uncertainty fields remain authoritative.",
+      "contentUrl": "data/results.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "6674b9fbdf61dadd117d3ad0aef3d8c7c85e2339eba979b67dfd6628617978ed"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "assets",
+      "name": "assets",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "assets/asset_id",
+          "name": "asset_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/assets.csv"
+            },
+            "extract": {
+              "column": "asset_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "assets/url",
+          "name": "url",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/assets.csv"
+            },
+            "extract": {
+              "column": "url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "assets/checksum_algorithm",
+          "name": "checksum_algorithm",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/assets.csv"
+            },
+            "extract": {
+              "column": "checksum_algorithm"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "assets/checksum",
+          "name": "checksum",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/assets.csv"
+            },
+            "extract": {
+              "column": "checksum"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "assets/bytes",
+          "name": "bytes",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/assets.csv"
+            },
+            "extract": {
+              "column": "bytes"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "assets/licence",
+          "name": "licence",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/assets.csv"
+            },
+            "extract": {
+              "column": "licence"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "assets/source_url",
+          "name": "source_url",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/assets.csv"
+            },
+            "extract": {
+              "column": "source_url"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "audibility_sample",
+      "name": "audibility_sample",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/pass_id",
+          "name": "pass_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "pass_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/source",
+          "name": "source",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/time_grade",
+          "name": "time_grade",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "time_grade"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/dist_band",
+          "name": "dist_band",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "dist_band"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/alt_band",
+          "name": "alt_band",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "alt_band"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/ac_class",
+          "name": "ac_class",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "ac_class"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/aircraft_type",
+          "name": "aircraft_type",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "aircraft_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/slant_m",
+          "name": "slant_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "slant_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/agl_m",
+          "name": "agl_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "agl_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/weight",
+          "name": "weight",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "weight"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/status",
+          "name": "status",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "status"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/reason",
+          "name": "reason",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "reason"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/reference",
+          "name": "reference",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "reference"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/n_quiet",
+          "name": "n_quiet",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "n_quiet"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/excess_db",
+          "name": "excess_db",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "excess_db"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/clf_cpa",
+          "name": "clf_cpa",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "clf_cpa"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/clf_quiet_median",
+          "name": "clf_quiet_median",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "clf_quiet_median"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/clf_aircraft",
+          "name": "clf_aircraft",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "clf_aircraft"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/decoy_excess_db",
+          "name": "decoy_excess_db",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "decoy_excess_db"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/decoy_band",
+          "name": "decoy_band",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "decoy_band"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audibility_sample/decoy_clf",
+          "name": "decoy_clf",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/audibility_sample.csv"
+            },
+            "extract": {
+              "column": "decoy_clf"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "b3_blind_squares",
+      "name": "b3_blind_squares",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/task",
+          "name": "task",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "task"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/lat_min",
+          "name": "lat_min",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "lat_min"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/lat_max",
+          "name": "lat_max",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "lat_max"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/lon_min",
+          "name": "lon_min",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "lon_min"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/lon_max",
+          "name": "lon_max",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "lon_max"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/half_side_km",
+          "name": "half_side_km",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "half_side_km"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "b3_blind_squares/source",
+          "name": "source",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/b3_blind_squares.csv"
+            },
+            "extract": {
+              "column": "source"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "benchmark_answers",
+      "name": "benchmark_answers",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/method",
+          "name": "method",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.method"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/version",
+          "name": "version",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.version"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/subset",
+          "name": "subset",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.subset"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/recording",
+          "name": "recording",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/task",
+          "name": "task",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.task"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/status",
+          "name": "status",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.status"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/error_m",
+          "name": "error_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.error_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/time_err_s",
+          "name": "time_err_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.time_err_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/runtime_s",
+          "name": "runtime_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.runtime_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/cores",
+          "name": "cores",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.cores"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/cpu_s",
+          "name": "cpu_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.cpu_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/correct_aircraft",
+          "name": "correct_aircraft",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.correct_aircraft"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/n_passes_used",
+          "name": "n_passes_used",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.n_passes_used"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/oracle",
+          "name": "oracle",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.oracle"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/setup",
+          "name": "setup",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.setup"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/run_id",
+          "name": "run_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.run_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/split",
+          "name": "split",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/source_file",
+          "name": "source_file",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.source_file"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "benchmark_answers/source_row_sha256",
+          "name": "source_row_sha256",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/benchmark_answers.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.source_row_sha256"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "claim_check_answers",
+      "name": "claim_check_answers",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/stage",
+          "name": "stage",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "stage"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/verdict",
+          "name": "verdict",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "verdict"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/n_passes",
+          "name": "n_passes",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "n_passes"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/best_shift_h",
+          "name": "best_shift_h",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "best_shift_h"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/best_day_shift",
+          "name": "best_day_shift",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "best_day_shift"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/hyp_h",
+          "name": "hyp_h",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "hyp_h"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/n_geo_groups",
+          "name": "n_geo_groups",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "n_geo_groups"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/n_matched",
+          "name": "n_matched",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "n_matched"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/resid_s",
+          "name": "resid_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "resid_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_answers/rule_sha",
+          "name": "rule_sha",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_answers.csv"
+            },
+            "extract": {
+              "column": "rule_sha"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "claim_check_cohort",
+      "name": "claim_check_cohort",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_cohort/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_cohort.csv"
+            },
+            "extract": {
+              "column": "recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_cohort/claimed_start_utc",
+          "name": "claimed_start_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_cohort.csv"
+            },
+            "extract": {
+              "column": "claimed_start_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_cohort/duration_known",
+          "name": "duration_known",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_cohort.csv"
+            },
+            "extract": {
+              "column": "duration_known"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "claim_check_cohort/source_coords_usable",
+          "name": "source_coords_usable",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/claim_check_cohort.csv"
+            },
+            "extract": {
+              "column": "source_coords_usable"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "clock_tasks",
+      "name": "clock_tasks",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "clock_tasks/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/clock_tasks.csv"
+            },
+            "extract": {
+              "column": "recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "clock_tasks/scenario",
+          "name": "scenario",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/clock_tasks.csv"
+            },
+            "extract": {
+              "column": "scenario"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "clock_tasks/reference_start_unix",
+          "name": "reference_start_unix",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/clock_tasks.csv"
+            },
+            "extract": {
+              "column": "reference_start_unix"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "clock_tasks/reference_error_s",
+          "name": "reference_error_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/clock_tasks.csv"
+            },
+            "extract": {
+              "column": "reference_error_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "clock_tasks/reference_set_unix",
+          "name": "reference_set_unix",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/clock_tasks.csv"
+            },
+            "extract": {
+              "column": "reference_set_unix"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "coverage",
+      "name": "coverage",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/source",
+          "name": "source",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/cut_status",
+          "name": "cut_status",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.cut_status"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/cut_reference",
+          "name": "cut_reference",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.cut_reference"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/withheld_reason",
+          "name": "withheld_reason",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.withheld_reason"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/invalid_metadata_reason",
+          "name": "invalid_metadata_reason",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.invalid_metadata_reason"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/recording_start_utc",
+          "name": "recording_start_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_start_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/recording_end_utc",
+          "name": "recording_end_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_end_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/input_sample_count",
+          "name": "input_sample_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.input_sample_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/sample_count_during_recording",
+          "name": "sample_count_during_recording",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.sample_count_during_recording"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/usable_altitude_sample_count",
+          "name": "usable_altitude_sample_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.usable_altitude_sample_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/missing_altitude_sample_count",
+          "name": "missing_altitude_sample_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.missing_altitude_sample_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/invalid_position_or_identity_sample_count",
+          "name": "invalid_position_or_identity_sample_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.invalid_position_or_identity_sample_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/duplicate_sample_count",
+          "name": "duplicate_sample_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.duplicate_sample_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/gaps_over_60s_count",
+          "name": "gaps_over_60s_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.gaps_over_60s_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/max_aircraft_gap_s",
+          "name": "max_aircraft_gap_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.max_aircraft_gap_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/first_sample_utc",
+          "name": "first_sample_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.first_sample_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/last_sample_utc",
+          "name": "last_sample_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.last_sample_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/pass_count",
+          "name": "pass_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.pass_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/all_aircraft_completeness",
+          "name": "all_aircraft_completeness",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.all_aircraft_completeness"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/altitude_reference_uncertainty",
+          "name": "altitude_reference_uncertainty",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.altitude_reference_uncertainty"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/observed_samples_above_33000ft",
+          "name": "observed_samples_above_33000ft",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.observed_samples_above_33000ft"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/observed_passes_above_33000ft",
+          "name": "observed_passes_above_33000ft",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.observed_passes_above_33000ft"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/omitted_passes_due_to_upstream_cap",
+          "name": "omitted_passes_due_to_upstream_cap",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.omitted_passes_due_to_upstream_cap"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/uncapped_daily_data_used",
+          "name": "uncapped_daily_data_used",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.uncapped_daily_data_used"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/observer_elevation_m",
+          "name": "observer_elevation_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.observer_elevation_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/observer_elevation_basis",
+          "name": "observer_elevation_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.observer_elevation_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/sampling_method",
+          "name": "sampling_method",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.sampling_method"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/max_contiguous_gap_s",
+          "name": "max_contiguous_gap_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.max_contiguous_gap_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/coverage_caveat",
+          "name": "coverage_caveat",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.coverage_caveat"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/recording_time_basis",
+          "name": "recording_time_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_time_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/recording_time_precision_s",
+          "name": "recording_time_precision_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_time_precision_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/recording_position_basis",
+          "name": "recording_position_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_position_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/recording_position_precision_m",
+          "name": "recording_position_precision_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_position_precision_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "coverage/upstream_cut_filters",
+          "name": "upstream_cut_filters",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/coverage.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.upstream_cut_filters"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "detection_inventory",
+      "name": "detection_inventory",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/set",
+          "name": "set",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.set"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/detector_status",
+          "name": "detector_status",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.detector_status"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/null_reason",
+          "name": "null_reason",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.null_reason"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/file_group",
+          "name": "file_group",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.file_group"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/file_sha256",
+          "name": "file_sha256",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.file_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/n_events_raw",
+          "name": "n_events_raw",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.n_events_raw"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_inventory/n_events",
+          "name": "n_events",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_inventory.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.n_events"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "detection_predictions",
+      "name": "detection_predictions",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "detection_predictions/method",
+          "name": "method",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_predictions.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.method"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_predictions/set",
+          "name": "set",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_predictions.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.set"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_predictions/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_predictions.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_predictions/event_id",
+          "name": "event_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_predictions.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.event_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_predictions/t_cpa_arrive_s",
+          "name": "t_cpa_arrive_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_predictions.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.t_cpa_arrive_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_predictions/slant_distance_m",
+          "name": "slant_distance_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_predictions.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.slant_distance_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "detection_predictions/status",
+          "name": "status",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/detection_predictions.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.status"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "livermore_published_passes",
+      "name": "livermore_published_passes",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/source_recording_id",
+          "name": "source_recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "source_recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/ridge_start_utc",
+          "name": "ridge_start_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "ridge_start_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/published_horizontal_distance_m",
+          "name": "published_horizontal_distance_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "published_horizontal_distance_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/published_slant_distance_m",
+          "name": "published_slant_distance_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "published_slant_distance_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/published_height_above_recorder_m",
+          "name": "published_height_above_recorder_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "published_height_above_recorder_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/published_speed_at_closest_m_s",
+          "name": "published_speed_at_closest_m_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "published_speed_at_closest_m_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/distance_basis",
+          "name": "distance_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "distance_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "livermore_published_passes/source_url",
+          "name": "source_url",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/livermore_published_passes.csv"
+            },
+            "extract": {
+              "column": "source_url"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "passes",
+      "name": "passes",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "passes/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/source",
+          "name": "source",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/aircraft_hash",
+          "name": "aircraft_hash",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.aircraft_hash"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/pass_id",
+          "name": "pass_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.pass_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/first_in_range_sample_utc",
+          "name": "first_in_range_sample_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.first_in_range_sample_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/last_in_range_sample_utc",
+          "name": "last_in_range_sample_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.last_in_range_sample_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/closest_approach_utc",
+          "name": "closest_approach_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.closest_approach_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/closest_approach_basis",
+          "name": "closest_approach_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.closest_approach_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/horizontal_distance_m",
+          "name": "horizontal_distance_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.horizontal_distance_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/slant_distance_m",
+          "name": "slant_distance_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.slant_distance_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/altitude_m",
+          "name": "altitude_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.altitude_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/altitude_basis",
+          "name": "altitude_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.altitude_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/observer_elevation_m",
+          "name": "observer_elevation_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.observer_elevation_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/observer_elevation_basis",
+          "name": "observer_elevation_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.observer_elevation_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/ground_speed_m_s",
+          "name": "ground_speed_m_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.ground_speed_m_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/track_deg",
+          "name": "track_deg",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.track_deg"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/aircraft_type",
+          "name": "aircraft_type",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.aircraft_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/aircraft_category",
+          "name": "aircraft_category",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.aircraft_category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/wake_turbulence_category",
+          "name": "wake_turbulence_category",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.wake_turbulence_category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/surveillance_sources",
+          "name": "surveillance_sources",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.surveillance_sources"
+            }
+          },
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/sample_count",
+          "name": "sample_count",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.sample_count"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/max_sample_gap_s",
+          "name": "max_sample_gap_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.max_sample_gap_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/detector_found",
+          "name": "detector_found",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.detector_found"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/detector_evidence",
+          "name": "detector_evidence",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.detector_evidence"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/locator_used",
+          "name": "locator_used",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.locator_used"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/locator_evidence",
+          "name": "locator_evidence",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.locator_evidence"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/geometric_proximity_is_not_audibility",
+          "name": "geometric_proximity_is_not_audibility",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.geometric_proximity_is_not_audibility"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/interpolated_closest_approach_utc",
+          "name": "interpolated_closest_approach_utc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.interpolated_closest_approach_utc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/interpolated_slant_distance_m",
+          "name": "interpolated_slant_distance_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.interpolated_slant_distance_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/interpolated_horizontal_distance_m",
+          "name": "interpolated_horizontal_distance_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.interpolated_horizontal_distance_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/interpolation_bracket_gap_s",
+          "name": "interpolation_bracket_gap_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.interpolation_bracket_gap_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/interpolation_basis",
+          "name": "interpolation_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.interpolation_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/ground_status",
+          "name": "ground_status",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.ground_status"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/audibility_basis",
+          "name": "audibility_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.audibility_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/audible",
+          "name": "audible",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.audible"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/audible_classifier",
+          "name": "audible_classifier",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.audible_classifier"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "passes/audible_excess_db",
+          "name": "audible_excess_db",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/passes.jsonl"
+            },
+            "extract": {
+              "jsonPath": "$.audible_excess_db"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "recordings",
+      "name": "recordings",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/recording_id",
+          "name": "recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/source",
+          "name": "source",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/source_recording_id",
+          "name": "source_recording_id",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "source_recording_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/source_url",
+          "name": "source_url",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "source_url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/audio_url",
+          "name": "audio_url",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "audio_url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/audio_sha256",
+          "name": "audio_sha256",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "audio_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/credit",
+          "name": "credit",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "credit"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/audio_licence",
+          "name": "audio_licence",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "audio_licence"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/public_latitude",
+          "name": "public_latitude",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "public_latitude"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/public_longitude",
+          "name": "public_longitude",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "public_longitude"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/position_basis",
+          "name": "position_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "position_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/position_precision_m",
+          "name": "position_precision_m",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "position_precision_m"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/utc_start",
+          "name": "utc_start",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "utc_start"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/duration_s",
+          "name": "duration_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "duration_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/time_basis",
+          "name": "time_basis",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "time_basis"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/time_precision_s",
+          "name": "time_precision_s",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "time_precision_s"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "recordings/audio_access",
+          "name": "audio_access",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/recordings.csv"
+            },
+            "extract": {
+              "column": "audio_access"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "results",
+      "name": "results",
+      "description": "Rows documented in schemas/ and DATASHEET.md.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "results/set",
+          "name": "set",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "set"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/entrant",
+          "name": "entrant",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "entrant"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/column",
+          "name": "column",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "column"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/value",
+          "name": "value",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "value"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/post_hoc",
+          "name": "post_hoc",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "post_hoc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/split",
+          "name": "split",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/source",
+          "name": "source",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/version",
+          "name": "version",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "version"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "results/source_snapshot_sha256",
+          "name": "source_snapshot_sha256",
+          "description": "See the table schema and datasheet; null or blank means unavailable where permitted.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/results.csv"
+            },
+            "extract": {
+              "column": "source_snapshot_sha256"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "citeAs": "Kris Atallah (2026). AircraftWitness: How Often Aircraft Can Locate Recordings. Version 1.0.0. See CITATION.cff and source credits. Staged release, no DOI assigned."
+}

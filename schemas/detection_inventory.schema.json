@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geoloc:detection-inventory:1",
+  "title": "AircraftWitness detector-file inventory",
+  "description": "One row per recordings.csv row: whether a frozen detector output exists. A missing output is never an empty detection.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["recording_id", "set", "detector_status", "null_reason", "file_group", "file_sha256", "n_events_raw", "n_events"],
+  "properties": {
+    "recording_id": {"type": "string", "minLength": 1},
+    "set": {"enum": ["a2o_b1", "a2o_b2", "a2o_b3", "eclipse", "xc", "parks", "liv", "live"]},
+    "detector_status": {"enum": ["present", "missing", "withheld"]},
+    "null_reason": {"type": ["string", "null"]},
+    "file_group": {"type": ["string", "null"]},
+    "file_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "n_events_raw": {"type": ["integer", "null"], "minimum": 0},
+    "n_events": {"type": ["integer", "null"], "minimum": 0}
+  },
+  "if": {"properties": {"detector_status": {"const": "present"}}},
+  "then": {"required": ["file_sha256", "n_events"], "properties": {"file_sha256": {"type": "string"}, "n_events": {"type": "integer"}, "null_reason": {"type": "null"}}},
+  "else": {"properties": {"file_sha256": {"type": "null"}, "n_events": {"type": "null"}, "null_reason": {"type": "string"}}}
+}

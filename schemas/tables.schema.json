@@ -1,0 +1,694 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AircraftWitness source and result rows",
+  "description": "CSV schemas apply after csv.DictReader: cells are strings and an empty permitted numeric cell means unknown, not zero. JSONL keeps its native value types.",
+  "$defs": {
+    "number_cell": {
+      "type": "string",
+      "pattern": "^(?:[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?)?$"
+    },
+    "recordings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recording_id",
+        "source",
+        "source_recording_id",
+        "source_url",
+        "audio_url",
+        "audio_sha256",
+        "credit",
+        "audio_licence",
+        "public_latitude",
+        "public_longitude",
+        "position_basis",
+        "position_precision_m",
+        "utc_start",
+        "duration_s",
+        "time_basis",
+        "time_precision_s",
+        "audio_access"
+      ],
+      "properties": {
+        "recording_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_recording_id": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audio_url": {
+          "type": "string"
+        },
+        "audio_sha256": {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{64})?$"
+        },
+        "credit": {
+          "type": "string"
+        },
+        "audio_licence": {
+          "type": "string"
+        },
+        "public_latitude": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "public_longitude": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "position_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position_precision_m": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "utc_start": {
+          "type": "string"
+        },
+        "duration_s": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "time_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_precision_s": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "audio_access": {
+          "type": "string"
+        }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_id",
+        "url",
+        "checksum_algorithm",
+        "checksum",
+        "bytes",
+        "licence",
+        "source_url"
+      ],
+      "properties": {
+        "asset_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "checksum_algorithm": {
+          "enum": [
+            "md5",
+            "sha256"
+          ]
+        },
+        "checksum": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}(?:[a-f0-9]{32})?$"
+        },
+        "bytes": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        },
+        "licence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "clock_tasks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recording_id",
+        "scenario",
+        "reference_start_unix",
+        "reference_error_s",
+        "reference_set_unix"
+      ],
+      "properties": {
+        "recording_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scenario": {
+          "enum": [
+            "native",
+            "am_like",
+            "fast_neg",
+            "blind_fast"
+          ]
+        },
+        "reference_start_unix": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "reference_error_s": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "reference_set_unix": {
+          "$ref": "#/$defs/number_cell"
+        }
+      }
+    },
+    "claim_check_cohort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recording_id",
+        "claimed_start_utc",
+        "duration_known",
+        "source_coords_usable"
+      ],
+      "properties": {
+        "recording_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimed_start_utc": {
+          "type": "string"
+        },
+        "duration_known": {
+          "enum": [
+            "True",
+            "False",
+            "true",
+            "false"
+          ]
+        },
+        "source_coords_usable": {
+          "enum": [
+            "True",
+            "False",
+            "true",
+            "false"
+          ]
+        }
+      }
+    },
+    "claim_check_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recording_id",
+        "stage",
+        "verdict",
+        "n_passes",
+        "best_shift_h",
+        "best_day_shift",
+        "hyp_h",
+        "n_geo_groups",
+        "n_matched",
+        "resid_s",
+        "rule_sha"
+      ],
+      "properties": {
+        "recording_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stage": {
+          "type": "string"
+        },
+        "verdict": {
+          "enum": [
+            "confirmed",
+            "failed",
+            "hour",
+            "no_adsb",
+            "no_pass",
+            "pending",
+            "too_short",
+            "undecided"
+          ]
+        },
+        "n_passes": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "best_shift_h": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "best_day_shift": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "hyp_h": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "n_geo_groups": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "n_matched": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "resid_s": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "rule_sha": {
+          "type": "string"
+        }
+      }
+    },
+    "livermore_published_passes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recording_id",
+        "source_recording_id",
+        "ridge_start_utc",
+        "published_horizontal_distance_m",
+        "published_slant_distance_m",
+        "published_height_above_recorder_m",
+        "published_speed_at_closest_m_s",
+        "distance_basis",
+        "source_url"
+      ],
+      "properties": {
+        "recording_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_recording_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ridge_start_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "published_horizontal_distance_m": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "published_slant_distance_m": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "published_height_above_recorder_m": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "published_speed_at_closest_m_s": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "distance_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "set",
+        "entrant",
+        "column",
+        "value",
+        "post_hoc",
+        "split",
+        "source",
+        "version",
+        "source_snapshot_sha256"
+      ],
+      "properties": {
+        "set": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Row group of the paper's main table, as printed."
+        },
+        "entrant": {
+          "enum": [
+            "reference",
+            "dopplerprint",
+            "unheard",
+            "centre"
+          ],
+          "description": "reference = the paper's method; centre = answering the square's centre."
+        },
+        "column": {
+          "enum": [
+            "n",
+            "ans",
+            "hits",
+            "chance",
+            "ch2",
+            "sites",
+            "wt",
+            "wa"
+          ],
+          "description": "n recordings, ans answered, hits within 1 km, chance = hits expected from uniform guesses over all n, ch2 = the analysis's chance over answered recordings only, sites with a hit, wt = hits of the worst wrong-time arm, wa = hits with another site's audio."
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The cell exactly as printed."
+        },
+        "post_hoc": {
+          "enum": [
+            "true",
+            "false"
+          ]
+        },
+        "split": {
+          "enum": [
+            "test",
+            "dev",
+            "outside"
+          ],
+          "description": "test or dev for this dataset's splits; outside for sets the paper scores that this dataset does not split."
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Result file and field the cell comes from."
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^paper-snapshot:[a-f0-9]{40}$"
+        },
+        "source_snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "sha256 of the paper's frozen main-table cells."
+        }
+      }
+    },
+    "benchmark_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "version",
+        "subset",
+        "recording",
+        "task",
+        "status",
+        "source_file",
+        "source_row_sha256"
+      ],
+      "properties": {
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subset": {
+          "enum": [
+            "XC",
+            "LIV"
+          ]
+        },
+        "recording": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "error_m": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "time_err_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "runtime_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cores": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cpu_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "correct_aircraft": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "n_passes_used": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "oracle": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "setup": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "split": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_row_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "b3_blind_squares": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recording_id",
+        "task",
+        "lat_min",
+        "lat_max",
+        "lon_min",
+        "lon_max",
+        "half_side_km",
+        "source"
+      ],
+      "properties": {
+        "recording_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task": {
+          "enum": [
+            "T1",
+            "T2-date"
+          ]
+        },
+        "lat_min": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "lat_max": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "lon_min": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "lon_max": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "half_side_km": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "audibility_sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pass_id",
+        "source",
+        "time_grade",
+        "dist_band",
+        "alt_band",
+        "ac_class",
+        "aircraft_type",
+        "slant_m",
+        "agl_m",
+        "weight",
+        "status",
+        "reason",
+        "reference",
+        "n_quiet",
+        "excess_db",
+        "clf_cpa",
+        "clf_quiet_median",
+        "clf_aircraft",
+        "decoy_excess_db",
+        "decoy_band",
+        "decoy_clf"
+      ],
+      "properties": {
+        "pass_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "Pass in v2 snapshot v2-20261104T1715 (the same id as in data/passes.jsonl where a pass is in both)."
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_grade": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dist_band": {
+          "enum": [
+            "<2km",
+            "2-5km",
+            "5-10km"
+          ],
+          "description": "Slant distance stratum."
+        },
+        "alt_band": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Height above the observer stratum."
+        },
+        "ac_class": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Aircraft class from the ICAO description."
+        },
+        "aircraft_type": {
+          "type": "string"
+        },
+        "slant_m": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "agl_m": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "weight": {
+          "$ref": "#/$defs/number_cell",
+          "description": "Population count of the pass's stratum over its sample count."
+        },
+        "status": {
+          "enum": [
+            "audible",
+            "not_audible",
+            "undetermined"
+          ],
+          "description": "Band rule: audible when 50 Hz-1 kHz energy at closest approach is at least 3 dB above the recording's quiet windows (rule audible-v1, DATASHEET.md); a lower bound on audibility."
+        },
+        "reason": {
+          "enum": [
+            "",
+            "cpa_outside_audio",
+            "no_quiet_reference",
+            "no_audio",
+            "bad_audio"
+          ],
+          "description": "Why a pass is undetermined."
+        },
+        "reference": {
+          "enum": [
+            "",
+            "recording",
+            "neighbours"
+          ]
+        },
+        "n_quiet": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "excess_db": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "clf_cpa": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "clf_quiet_median": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "clf_aircraft": {
+          "enum": [
+            "",
+            "True",
+            "False"
+          ],
+          "description": "PANNs CNN14 aircraft call (independent check)."
+        },
+        "decoy_excess_db": {
+          "$ref": "#/$defs/number_cell"
+        },
+        "decoy_band": {
+          "enum": [
+            "",
+            "True",
+            "False"
+          ],
+          "description": "Band rule on a quiet decoy window (false-positive control)."
+        },
+        "decoy_clf": {
+          "enum": [
+            "",
+            "True",
+            "False"
+          ]
+        }
+      }
+    }
+  }
+}

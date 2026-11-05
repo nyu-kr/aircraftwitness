@@ -1,0 +1,297 @@
+[
+  {
+    "path": "data/assets.csv",
+    "rows": 694,
+    "sha256": "91d72ca96d4efe3039ffdc24ad607218e8102eae44d13fee421494551a90d110",
+    "fields": [
+      "asset_id",
+      "url",
+      "checksum_algorithm",
+      "checksum",
+      "bytes",
+      "licence",
+      "source_url"
+    ]
+  },
+  {
+    "path": "data/audibility_sample.csv",
+    "rows": 2000,
+    "sha256": "37c80b0365f0f6a5b0d2c53a29a2e650ccb8aced07f33cf51f36e2a788a78f5e",
+    "fields": [
+      "pass_id",
+      "source",
+      "time_grade",
+      "dist_band",
+      "alt_band",
+      "ac_class",
+      "aircraft_type",
+      "slant_m",
+      "agl_m",
+      "weight",
+      "status",
+      "reason",
+      "reference",
+      "n_quiet",
+      "excess_db",
+      "clf_cpa",
+      "clf_quiet_median",
+      "clf_aircraft",
+      "decoy_excess_db",
+      "decoy_band",
+      "decoy_clf"
+    ]
+  },
+  {
+    "path": "data/b3_blind_squares.csv",
+    "rows": 720,
+    "sha256": "e41653804a6c165525d950614147486d8ff0b1221c01bff07d80ca762c14c858",
+    "fields": [
+      "recording_id",
+      "task",
+      "lat_min",
+      "lat_max",
+      "lon_min",
+      "lon_max",
+      "half_side_km",
+      "source"
+    ]
+  },
+  {
+    "path": "data/benchmark_answers.jsonl",
+    "rows": 856,
+    "sha256": "c9673875a81bdcb2fba42a9c93504285371710f909b76db0ef40f6e7529f79fe",
+    "fields": [
+      "method",
+      "version",
+      "subset",
+      "recording",
+      "task",
+      "status",
+      "error_m",
+      "time_err_s",
+      "runtime_s",
+      "cores",
+      "cpu_s",
+      "correct_aircraft",
+      "n_passes_used",
+      "oracle",
+      "setup",
+      "run_id",
+      "split",
+      "source_file",
+      "source_row_sha256"
+    ]
+  },
+  {
+    "path": "data/claim_check_answers.csv",
+    "rows": 10464,
+    "sha256": "3bbe55fda085779687f71cf598dbf9437e5567e0579644648518dab00cebd19a",
+    "fields": [
+      "recording_id",
+      "stage",
+      "verdict",
+      "n_passes",
+      "best_shift_h",
+      "best_day_shift",
+      "hyp_h",
+      "n_geo_groups",
+      "n_matched",
+      "resid_s",
+      "rule_sha"
+    ]
+  },
+  {
+    "path": "data/claim_check_cohort.csv",
+    "rows": 10464,
+    "sha256": "5cd9b95e76a2ca3b6c4036d620d50df6a06b26dd3ba8b9bb0bf0ecc04617b980",
+    "fields": [
+      "recording_id",
+      "claimed_start_utc",
+      "duration_known",
+      "source_coords_usable"
+    ]
+  },
+  {
+    "path": "data/clock_tasks.csv",
+    "rows": 152,
+    "sha256": "89671172c29015d3e024c774d39981170261783664f3c5b9672742a881ef97b7",
+    "fields": [
+      "recording_id",
+      "scenario",
+      "reference_start_unix",
+      "reference_error_s",
+      "reference_set_unix"
+    ]
+  },
+  {
+    "path": "data/coverage.jsonl",
+    "rows": 11647,
+    "sha256": "504377e5d8237ec9b2a7cc8f7203dab4eb886e0ca0b74ac1a6e497d578cd7a12",
+    "fields": [
+      "recording_id",
+      "source",
+      "cut_status",
+      "cut_reference",
+      "withheld_reason",
+      "invalid_metadata_reason",
+      "recording_start_utc",
+      "recording_end_utc",
+      "input_sample_count",
+      "sample_count_during_recording",
+      "usable_altitude_sample_count",
+      "missing_altitude_sample_count",
+      "invalid_position_or_identity_sample_count",
+      "duplicate_sample_count",
+      "gaps_over_60s_count",
+      "max_aircraft_gap_s",
+      "first_sample_utc",
+      "last_sample_utc",
+      "pass_count",
+      "all_aircraft_completeness",
+      "altitude_reference_uncertainty",
+      "observed_samples_above_33000ft",
+      "observed_passes_above_33000ft",
+      "omitted_passes_due_to_upstream_cap",
+      "uncapped_daily_data_used",
+      "observer_elevation_m",
+      "observer_elevation_basis",
+      "sampling_method",
+      "max_contiguous_gap_s",
+      "coverage_caveat",
+      "recording_time_basis",
+      "recording_time_precision_s",
+      "recording_position_basis",
+      "recording_position_precision_m",
+      "upstream_cut_filters"
+    ]
+  },
+  {
+    "path": "data/detection_inventory.jsonl",
+    "rows": 11647,
+    "sha256": "6cf5ce22ded978df896be3fb95f5afadba9ea53912982ead8367b96688b0ee25",
+    "fields": [
+      "recording_id",
+      "set",
+      "detector_status",
+      "null_reason",
+      "file_group",
+      "file_sha256",
+      "n_events_raw",
+      "n_events"
+    ]
+  },
+  {
+    "path": "data/detection_predictions.jsonl",
+    "rows": 2260,
+    "sha256": "177f8cddf28e59ed6e15f2a882dea543ebad0e3feb56a06ddbd6dd9bb18c367e",
+    "fields": [
+      "method",
+      "set",
+      "recording_id",
+      "event_id",
+      "t_cpa_arrive_s",
+      "slant_distance_m",
+      "status"
+    ]
+  },
+  {
+    "path": "data/livermore_published_passes.csv",
+    "rows": 40,
+    "sha256": "4fbff4f60efbe3b87b3f52718968df244e6e8f5fce55eadfb732cb57709b6e0c",
+    "fields": [
+      "recording_id",
+      "source_recording_id",
+      "ridge_start_utc",
+      "published_horizontal_distance_m",
+      "published_slant_distance_m",
+      "published_height_above_recorder_m",
+      "published_speed_at_closest_m_s",
+      "distance_basis",
+      "source_url"
+    ]
+  },
+  {
+    "path": "data/passes.jsonl",
+    "rows": 4020,
+    "sha256": "13753887f5547e9252b1735cfedfb3600645926e4da32262c461df5f196febe3",
+    "fields": [
+      "recording_id",
+      "source",
+      "aircraft_hash",
+      "pass_id",
+      "first_in_range_sample_utc",
+      "last_in_range_sample_utc",
+      "closest_approach_utc",
+      "closest_approach_basis",
+      "horizontal_distance_m",
+      "slant_distance_m",
+      "altitude_m",
+      "altitude_basis",
+      "observer_elevation_m",
+      "observer_elevation_basis",
+      "ground_speed_m_s",
+      "track_deg",
+      "aircraft_type",
+      "aircraft_category",
+      "wake_turbulence_category",
+      "surveillance_sources",
+      "sample_count",
+      "max_sample_gap_s",
+      "detector_found",
+      "detector_evidence",
+      "locator_used",
+      "locator_evidence",
+      "geometric_proximity_is_not_audibility",
+      "interpolated_closest_approach_utc",
+      "interpolated_slant_distance_m",
+      "interpolated_horizontal_distance_m",
+      "interpolation_bracket_gap_s",
+      "interpolation_basis",
+      "ground_status",
+      "audibility_basis",
+      "audible",
+      "audible_classifier",
+      "audible_excess_db"
+    ]
+  },
+  {
+    "path": "data/recordings.csv",
+    "rows": 11647,
+    "sha256": "53bff07e1ba6679fc9a48130a8a543a04f378b4a8ca3fffe282c12a001087631",
+    "fields": [
+      "recording_id",
+      "source",
+      "source_recording_id",
+      "source_url",
+      "audio_url",
+      "audio_sha256",
+      "credit",
+      "audio_licence",
+      "public_latitude",
+      "public_longitude",
+      "position_basis",
+      "position_precision_m",
+      "utc_start",
+      "duration_s",
+      "time_basis",
+      "time_precision_s",
+      "audio_access"
+    ]
+  },
+  {
+    "path": "data/results.csv",
+    "rows": 119,
+    "sha256": "6674b9fbdf61dadd117d3ad0aef3d8c7c85e2339eba979b67dfd6628617978ed",
+    "fields": [
+      "set",
+      "entrant",
+      "column",
+      "value",
+      "post_hoc",
+      "split",
+      "source",
+      "version",
+      "source_snapshot_sha256"
+    ]
+  }
+]

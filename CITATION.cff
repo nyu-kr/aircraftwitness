@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Cite this dataset and each source recording's required attribution. Version 1.0.0. No dataset DOI is assigned yet."
+title: "AircraftWitness: How Often Aircraft Can Locate Recordings"
+type: dataset
+version: "1.0.0"
+date-released: 2026-11-04
+authors:
+  - family-names: "Atallah"
+    given-names: "Kris"
+    affiliation: "New York University"
+license: ODbL-1.0
+abstract: "A source-attributed field-recording index, sampled aircraft-proximity labels and frozen benchmark outputs. Proximity is not proof of audibility, source clocks are not necessarily UTC ground truth, and coverage limitations are explicit. Original code is MIT. Audio and source metadata retain their own licences."
+keywords:
+  - environmental audio
+  - aircraft
+  - ADS-B
+  - geolocation
+  - recorder clocks
+  - benchmark

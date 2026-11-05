@@ -1,0 +1,5 @@
+# eval and check-squares need only Python 3.10+; label tools and table checks:
+numpy==2.5.4
+pandas==3.1.0
+pyarrow==26.0.1
+jsonschema==4.26.0

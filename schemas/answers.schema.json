@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AircraftWitness open answer row",
+  "type": "object",
+  "required": ["method", "version", "set", "task", "recording_id", "status"],
+  "properties": {
+    "method": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "set": {"type": "string", "minLength": 1},
+    "task": {"enum": ["T1", "T2-date", "clock", "claim-check"]},
+    "recording_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["ok", "n/a", "no_pass", "no_match", "fail", "timeout"]},
+    "latitude": {"type": "number", "minimum": -90, "maximum": 90},
+    "longitude": {"type": "number", "minimum": -180, "maximum": 180},
+    "scenario": {"enum": ["native", "am_like", "fast_neg", "blind_fast"]},
+    "predicted_clock_error_s": {"type": "number"},
+    "verdict": {"enum": ["confirmed", "failed", "hour", "no_adsb", "no_pass", "pending", "too_short", "undecided"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"task": {"enum": ["T1", "T2-date"]}, "status": {"const": "ok"}}}, "then": {"required": ["latitude", "longitude"]}},
+    {"if": {"properties": {"task": {"const": "clock"}}}, "then": {"required": ["scenario"]}, "else": {"not": {"required": ["scenario"]}}},
+    {"if": {"properties": {"task": {"const": "clock"}, "status": {"const": "ok"}}}, "then": {"required": ["predicted_clock_error_s"]}},
+    {"if": {"properties": {"task": {"const": "claim-check"}, "status": {"const": "ok"}}}, "then": {"required": ["verdict"]}}
+  ],
+  "additionalProperties": false
+}

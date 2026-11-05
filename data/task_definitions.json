@@ -1,0 +1,107 @@
+{
+ "version": "1.0.0",
+ "tasks": [
+  {
+   "name": "T1-field",
+   "unit": "recording",
+   "inputs": "audio, start time within 60 s, a 20 km search square at a random offset, public surveillance tracks",
+   "metric": "hit within 1000 m; failed, crashed and missing runs are misses",
+   "released_cohort": "360 A2O batch 3 recordings at 23 sites (the test split; the blind runs' squares per recording, data/b3_blind_squares.csv); 295 A2O batch 1 and 61 batch 2 recordings; 187 Eclipse T1 clips",
+   "time_slack_s": {
+    "primary": 60,
+    "A2O_batch1_preregistered_variant": 5,
+    "A2O_batch3_slack5_secondary": 5
+   },
+   "aggregation": "per clip plus separately reported site-level controls; do not pool correlated site-days",
+   "registration": "Eclipse ecl-v1; A2O a2o-v1 and dated batch3 amendments",
+   "search_square": "A2O batch 3: the exact 20 km square each recording had in the blind run (data/b3_blind_squares.csv, task T1); the A2O network publishes its positions, so the square reveals nothing the source does not"
+  },
+  {
+   "name": "T1-public",
+   "unit": "recording",
+   "inputs": "audio, time prior, 20 by 20 km square with seeded offset rather than a truth-centred square",
+   "time_slack_s": {
+    "XC": 300,
+    "LIV": 2
+   },
+   "metric": "report 100 m, 500 m and 1000 m hit rates; legacy paper benchmark table uses 500 m; median only among answered cases",
+   "denominator": "union of cases run by any method per subset/task; absent method cases are misses",
+   "note": "Livermore is development data. The scorer never substitutes a fitted location for it"
+  },
+  {
+   "name": "clock",
+   "unit": "recording and injected scenario",
+   "inputs": "known or explicitly inferred place, audio over days, public surveillance; no injected offset/drift given to the estimator",
+   "model": "recorder error e(t)=a+b(t-t_set), recorder time minus UTC; drift reported seconds/day",
+   "metric": "RMS offset error across clip starts and absolute drift error seconds/day; held-out-day checks retained",
+   "released_eligible_recordings": 38,
+   "injected_scenarios": 4,
+   "gate": {
+    "info_min": 5,
+    "ridge_frames_min": 60,
+    "RANSAC_tolerance_s": 1.5
+   },
+   "note": "40 indexed Livermore clips; two unreliable starts excluded by the original clock run; no new fit is run for this release"
+  },
+  {
+   "name": "claim-check",
+   "unit": "recording",
+   "inputs": "audio, claimed public place and claimed UTC; no assumed clock correctness",
+   "cohort_rows": 10464,
+   "processed_denominator": 10462,
+   "ridge_group_denominator": 715,
+   "hypotheses": "whole-hour shifts -13 through +13 h and +/-24 h; each has +/-300 s clock slack",
+   "match_gate": {
+    "speed_relative_tolerance": 0.2,
+    "distance_ratio": [
+     0.6,
+     1.6
+    ],
+    "noise_units_max": 1.5,
+    "ridge_scatter_floor_hz": 0.25
+   },
+   "confirmed": "a stated-time geometry match that is also that ridge group's best fit over every hypothesis window",
+   "shifted": "no stated-time match, plus two matched groups agreeing within 8 s or one group's fit beating all other windows by a factor of 2",
+   "otherwise": "undecided, no_pass, no_adsb, failed or pending as recorded",
+   "controls": "same audio and clock at a 150 km decoy, known-good native clips, injected shifts and held-out iNaturalist decoys; compare within recording",
+   "frozen_rule_sha": "1bd1e1248873",
+   "note": "A slip verdict is not proof that a recordist's clock or claim is wrong"
+  },
+  {
+   "name": "T2-date",
+   "unit": "recording",
+   "inputs": "audio, recording date and opaque 100 km square; no known start time",
+   "metric": "hits within 1000 m; all missing or failed runs remain misses",
+   "released_cohort": "A2O batch 3 (360, squares in data/b3_blind_squares.csv task T2-date), A2O batch 1 (295) and Eclipse clips (187), as the original unheard date-only runs",
+   "submitted_answer_task": "T2-date",
+   "note": "Same released location references, a different input-information task. It must not be pooled with known-start T1."
+  },
+  {
+   "name": "pass-detection-distance",
+   "unit": "aircraft-proximity candidate",
+   "inputs": "audio only; output received CPA seconds since clip start and slant distance metres",
+   "rule": "aircraftwitness-detection-v1; deterministic maximum-cardinality one-to-one temporal matching, then minimum total absolute timing error; inclusive 10 s tolerance; no distance gate",
+   "reference": "valid interpolated geometric CPA and slant where supported, otherwise observed minimum; add slant/343 s for acoustic propagation",
+   "recall_bands_m": [
+    [
+     0,
+     2000
+    ],
+    [
+     2000,
+     5000
+    ],
+    [
+     5000,
+     10000
+    ]
+   ],
+   "band_edges": "lower inclusive, upper exclusive except 10000 inclusive",
+   "metrics": "matched labels/labels per band; unmatched detections/audio hours; absolute and signed distance error among matches",
+   "denominator": "intersection of valid available surveillance cuts and existing detector output files; missing detector files are not empty predictions",
+   "limits": "proximity is not proof of audibility; unmatched does not mean acoustically false; sampled surveillance, clocks and source-position uncertainty limit labels",
+   "specification": "DATASHEET.md",
+   "submitted_answer_evaluator": "python3 -I tools/detection_benchmark.py evaluate"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geoloc:detection-summary:1",
+  "title": "AircraftWitness detection summary",
+  "description": "Metrics by set and combined. Every metric carries numerator, denominator, recordings, hours, rule and source hashes; a null value always has a null_reason. Proxy metrics against ADS-B labels, not acoustic ground truth.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["benchmark", "task", "method", "rule", "tolerance_s", "speed_of_sound_m_s", "labels_are", "source_sha256", "combined", "by_set"],
+  "properties": {
+    "benchmark": {"const": "AircraftWitness"},
+    "task": {"type": "string"}, "method": {"type": "string"}, "rule": {"type": "string"},
+    "tolerance_s": {"type": "number"}, "speed_of_sound_m_s": {"type": "number"}, "labels_are": {"type": "string"},
+    "source_sha256": {"type": "object"},
+    "combined": {"$ref": "#/$defs/metrics"},
+    "by_set": {"type": "object", "additionalProperties": {"$ref": "#/$defs/metrics"}}
+  },
+  "$defs": {
+    "metrics": {"type": "object", "additionalProperties": {"$ref": "#/$defs/metric"}, "required": ["recall_0_2km", "recall_2_5km", "recall_5_10km", "recall_all", "decoy_recall_all", "unmatched_per_hour", "median_abs_error_m", "mae_m", "median_signed_error_m"]},
+    "metric": {
+      "type": "object",
+      "required": ["metric", "set", "band", "numerator", "denominator", "value", "unit", "recordings", "hours", "rule", "null_reason", "source_sha256"],
+      "properties": {
+        "numerator": {"type": ["number", "null"]}, "denominator": {"type": ["number", "null"]}, "value": {"type": ["number", "null"]},
+        "recordings": {"type": "integer", "minimum": 0}, "hours": {"type": "number", "minimum": 0},
+        "null_reason": {"type": ["string", "null"]}, "source_sha256": {"type": "object"}
+      },
+      "if": {"properties": {"value": {"type": "null"}}},
+      "then": {"properties": {"null_reason": {"type": "string"}}},
+      "else": {"properties": {"null_reason": {"type": "null"}, "numerator": {"type": "number"}, "denominator": {"type": "number"}}}
+    }
+  }
+}

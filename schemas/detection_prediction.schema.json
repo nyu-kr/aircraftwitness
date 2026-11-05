@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geoloc:detection-prediction:1",
+  "title": "AircraftWitness detector prediction",
+  "description": "One detected pass candidate, or a no_events row when a detector file exists and holds no kept event. Times are seconds since the recording's own start; distance is the detector's fitted closest-approach slant range. A recording with no detector file has no row here (see detection_inventory).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["method", "set", "recording_id", "event_id", "t_cpa_arrive_s", "slant_distance_m", "status"],
+  "properties": {
+    "method": {"type": "string", "minLength": 1},
+    "set": {"enum": ["a2o_b1", "a2o_b2", "eclipse", "xc"]},
+    "recording_id": {"type": "string", "minLength": 1},
+    "event_id": {"type": ["string", "null"]},
+    "t_cpa_arrive_s": {"type": ["number", "null"]},
+    "slant_distance_m": {"type": ["number", "null"], "minimum": 0},
+    "status": {"enum": ["detected", "no_events"]}
+  }
+}

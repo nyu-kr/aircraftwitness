@@ -1,0 +1,12 @@
+# A2O batch 3: geo-verify scoring rule, fixed before the set exists
+
+Written 2026-11-04 by geo-verify, before a2o_blind_b3 exists and before any batch 3 answer. It applies geoloc/data/a2o_b3/PREREG.md (e3b44c4). The scorer is verify/bin/a2o_score.py, the batch 1-2 scorer, with a2o_blind_b3 added as a set; nothing else changes.
+
+- Truth: each packet's A2O site at its public portal position (sealed, verify/sealed). A hit is an answer within 1 km of it (haversine, R 6371 km).
+- Denominator: every packet in a2o_blind_b3/manifest.parquet. A crash, a missing row, no_pass, no_match or no answer is a miss. A row whose code is not frozen a2o-v1 (7f02287038f5) is a miss and is listed.
+- Primary (task T1, slack 60 s): hits, answers and sites with a hit out of all sites. Chance is the batch 1-2 shift null: each answer keeps its offset in its own box and is scored against the truth offsets of packets at other sites. That gives the expected hits and, per site, P(at least one hit). The primary p is the Poisson-binomial P(sites with a hit >= observed); success is p < 0.05, one-sided. The site is the unit, so packets of one site are not independent draws. Reported beside it: the uniform-box null (a site's chance = 1 - prod(1 - share of each box within 1 km of its answer)) and the recording-level Wilson interval, marked too narrow under clustering. Also reported, so one site cannot carry the result: the largest share of hits at one site, and the primary p with that site left out.
+- Secondary: precision among answers with p_within_1km >= 0.9 (frozen formula in the PREREG; margin from each answer's JSON, the runner-up's evidence counting 0 when there is none). Reported: n, hits, Wilson 95% interval and the number of sites among those hits. No test.
+- Controls (T1-p300, T1-m300, T1-C1, T1-slack5): scored the same way, labelled controls. Each is scored on the longest complete prefix of the run order, with T1 on the same packets beside it.
+- Run order: packet ids sorted, as the PREREG says. I accept it because the ids are opaque hashes. When the manifest lands I check that sorted order mixes sites (the share of each site in the first quarter against its share overall) and report that check.
+- Scoring time: primary at completion. Interim counts go to geo-paper only as "k of n done", never as hits, until the primary arm is complete.
+- Shared files: aggregates only, with no site ids, places, packet ids or box coordinates.

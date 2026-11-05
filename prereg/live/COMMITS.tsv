@@ -1,0 +1,26 @@
+utc	file	sha256	note
+2026-11-04T01:25:41+00:00	sealed/rule.md	84ee8604daa9c95a1a042971ea360bd7d4461a482bdd2722d699eb8add5b472f	v1 at freeze
+2026-11-04T01:25:41+00:00	frozen/geoloc-blind-v1	1e81f40533816cf311291985ab1228ce454a6555c131e90efb60c59d8eb897a2	geoloc tag blind-v1 = 1833453
+2026-11-04T01:48:11+00:00	sealed/rule.md	42d5d868a6329b6bbce3798c2acea84a98f3d8366d016dc3faa4da189fe05f90	v2: method blind-v2 (06869ad), prospective set = slots from 01:50 UTC, controls third
+2026-11-04T01:48:11+00:00	frozen/geoloc-blind-v2	4976e1804cd144cdf9df54651effd2b8042661f9ea327a7712230c30c7eafb18	geoloc tag blind-v2 = 06869ad
+2026-11-04T01:48:11+00:00	bin/run_blind.sh	948fcb5bc88cee8cad98fe27b0bd3385b59642eb4c417b0a1278642d82edeeaf	runner (frozen copy v2, slack from meta 30 s, jobs 3)
+2026-11-04T01:59:05+00:00	sealed/rule.md	fada3269b9062ae9155d1ddb41f5504715416907358fd5e85808263c59b3537b	v3: LB wording corrected (222 km box, not a median bird region; task unchanged)
+2026-11-04T02:12:41+00:00	sealed/rule.md	f26ce74d519e9a9dce7ca4c87282bd5f694fddd15efe9cd2c25a319c378ccf1e	v4: queue = seeded priority classes then capture time (capture to Wed 23:59 EST)
+2026-11-04T02:12:41+00:00	bin/run_blind.sh	b8c5229c7ff5cd826b19d7764d396ac52a7f0a16230d3583fc7393299776e287	runner v4 order
+2026-11-04T02:13:11+00:00	sealed/rule.md	323d6ac3f5c82689dc781f58f43f605aba7295dc0d08dbf5f17ea8c35a125d18	v4b: ADS-B input note (adsb.lol polls worldwide sqk 1200/7000)
+2026-11-04T02:28:07+00:00	bin/make_packets.py	cb74ed59c3ea0988605fe94865498378fcde7315dd14fd9bac083e10766b5dc3	packet builder: LB box = box_for(wid) from sealed/secret.txt, controls, segment dedupe fix
+2026-11-04T02:28:07+00:00	bin/stage2.py	0130901cd35380d3ad2b44c8edbcd2aa32f5b210cba3edc7beae58d5a0edcaab	LT1 release after LB answer hash
+2026-11-04T02:52:01+00:00	sealed/rule.md	f2ee6a7f6fee8ef181511eb5f46a8b1e1e0f190c70f735e2bf0bc608eb953bc1	v5
+2026-11-04T02:52:01+00:00	bin/make_packets.py	0b5581124ac03f283508e87b968cb4ce3d2515c08e03a1bc6d002477a33010e9	v5
+2026-11-04T02:52:01+00:00	bin/capture.py	e4a7145e78e30a7b7cd63437334d8859e0a784015afaf5dc4c69f062278b062c	v5
+2026-11-04T02:52:01+00:00	bin/run_blind.sh	fd56688cdff654413cc15345a1fbe6207488d5b5f04018f4bb84679618067077	v5
+2026-11-04T02:52:01+00:00	bin/stage2.py	0130901cd35380d3ad2b44c8edbcd2aa32f5b210cba3edc7beae58d5a0edcaab	v5
+2026-11-04T02:52:11+00:00	sealed/rule.md	fe9a984d9ec4582067cb255fef5d00af5fc2e2839c9bdaecd09695c5961541a2	v5 (time typo fixed; supersedes the line above)
+2026-11-04T03:02:35+00:00	bin/make_packets.py	0858a19983cab3402398401792cc8b317897d4765093f9fe83cc019e0a22937a	v5: packet hashes in windows.jsonl and sealed/deleted.jsonl
+2026-11-04T03:02:35+00:00	bin/capture.py	2159120aa0a6473c20233950724bebeb7baa69e6fa20e3fefdf2fb30111841f5	v5: re-resolve after 120 s without a new segment; media-sequence reset
+2026-11-04T03:06:49+00:00	bin/capture.py	c7ecec291766244225425f6625aba626669e1b2ad7a1c1fd2dae042dd3211dc3	v5: stale-stream log line only
+2026-11-04T03:11:04+00:00	bin/capture.py	c188facdb952e07be44b4f0f83392145661da42c23168a2d4882bcc668598344	v5: sampled-out segments not fetched (bandwidth only)
+2026-11-04T04:30:22+00:00	bin/capture.py	394565518d4e0de7f5586cdbd17d19543bc67813a783f21ea3c9ea07f7c4c777	v5: adsb.lol polls one circle just polled by adsb.fi every 60 s (overlap estimate); restart in a slot with no sampled open-mic window
+2026-11-04T04:39:31+00:00	sealed/rule.md	bc490207a6a889fc1f0114f84e7206675c97aeea3010b50875b3372c74d64139	v6
+2026-11-04T04:39:31+00:00	bin/make_packets.py	4fd3952d6662d5f4263bf4177937b140beb2a3235c548ed3329ccc8ca815ea03	v6
+2026-11-04T04:39:31+00:00	bin/stage2.py	817febf125260ee431c6398a104f5a472e8c2488c69684ff84078d0a3a90a6ac	v6

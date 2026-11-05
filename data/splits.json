@@ -1,0 +1,19 @@
+{
+  "benchmark": "AircraftWitness",
+  "fixed_on": "2026-11-04",
+  "splits": {
+    "A2O batch 3": "test",
+    "A2O batch 1": "dev",
+    "A2O batch 2": "dev",
+    "Eclipse clips": "dev",
+    "Eclipse pooled days": "dev",
+    "xeno-canto held-out": "dev",
+    "xeno-canto later": "dev",
+    "live": "dev",
+    "park archive": "dev",
+    "Livermore": "dev"
+  },
+  "rule": "A2O batch 3 is the fixed benchmark test; all other already inspected or method-development cohorts are development data. The historical held-out label in a cohort name describes the original paper run, not a new untouched benchmark test.",
+  "exposure": "These benchmark splits were fixed after the first paper outcomes existed. The original A2O batch 3 locator was frozen before its blind run, but its published results are now visible. Do not describe future tuning against public test results as a new blinded evaluation.",
+  "grouping": "Use whole source cohorts and recorder/site/deployment groups, not random clips from a shared deployment. The A2O batch 3 test split ships the blind runs' own squares per recording (data/b3_blind_squares.csv)."
+}
